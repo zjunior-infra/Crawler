@@ -1,0 +1,4 @@
+experiments:
+  macArmChromiumEnabled: true
+configuration:
+  logLevel: 'warn | error'
