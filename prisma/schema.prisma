@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider     = "mysql"
-  url          = env("MAIN_DATABASE_URL")
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -31,13 +31,13 @@ model Lister {
 model CrawledJob {
   id       String    @id @unique @default(cuid())
   company  String
-  title    String
-  link     String
-  email    String
+  title    String    
+  link     String   @default("NA")
+  email    String   @default("NA")
   type     String
-  deadline String
-  logo     String
-  skills   String
+  deadline String   @default("NA")
+  logo     String   @default("NA")
+  skills   String   @default("NA")
 }
 
 model ArchivedJob {
