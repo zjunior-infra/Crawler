@@ -11,6 +11,7 @@ export async function PushJobs(Jobs:Job[]) {
             skipDuplicates:true
         }
         )
+        return jobs
     }
     catch (err:any){
         console.error(err.message, err)

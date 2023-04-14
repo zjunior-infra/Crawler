@@ -8,3 +8,13 @@ export interface Job{
   logo: string
   skills: string
 }
+export interface dataJob{
+  id:string,
+  title:string,
+  company:string,
+  link:string,
+  skills:string,
+  deadline:string,
+  type:string,
+  logo:string
+}
