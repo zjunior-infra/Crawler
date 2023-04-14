@@ -7,7 +7,8 @@ export async function PushJobs(Jobs:Job[]) {
         const jobs= await prisma.crawledJob.createMany({
             data:[
                 ...Jobs
-            ]
+            ],
+            skipDuplicates:true
         }
         )
     }
@@ -16,3 +17,4 @@ export async function PushJobs(Jobs:Job[]) {
     }
     
 }
+
