@@ -29,19 +29,19 @@ model Lister {
 }
 
 model CrawledJob {
-  id       String    @id @unique @default(cuid())
+  id       String @id @unique @default(cuid())
   company  String
-  title    String    
-  link     String   @default("NA")
-  email    String   @default("NA")
+  title    String
+  link     String @default("NA")
+  email    String @default("NA")
   type     String
-  deadline String   @default("NA")
-  logo     String   @default("NA")
-  skills   String   @default("NA")
+  deadline String @default("NA")
+  logo     String @default("NA")
+  skills   String @default("NA")
 }
 
 model ArchivedJob {
-  id       String    @id @unique @default(cuid())
+  id       String @id @unique @default(cuid())
   company  String
   title    String
   link     String

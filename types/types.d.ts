@@ -1,4 +1,4 @@
-export interface Job{
+export interface Job {
   company: string
   title: string
   link: string
