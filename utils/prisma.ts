@@ -7,12 +7,15 @@ export async function PushJobs(Jobs:Job[]) {
         const jobs= await prisma.crawledJob.createMany({
             data:[
                 ...Jobs
-            ]
+            ],
+            skipDuplicates:true
         }
         )
+        return jobs
     }
     catch (err:any){
         console.error(err.message, err)
     }
     
 }
+
