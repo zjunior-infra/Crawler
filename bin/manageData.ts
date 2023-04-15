@@ -7,9 +7,9 @@ export class managedata {
         this.datatoJobType(dataJobs)
         this.PushtoDB();
     }
-    PushtoDB() {
+    async PushtoDB() {
         //this will remove duplicates by the id 
-        const results = PushJobs(this.data);
+        const results = await PushJobs(this.data);
         console.log(results)
     }
     datatoJobType(data: dataJob[]) {
