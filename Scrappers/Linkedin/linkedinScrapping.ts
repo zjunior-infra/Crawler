@@ -9,22 +9,22 @@ import { internScrapping } from './internScrapper';
 
 export const queryTitle=[
     'front-end',
-    // 'front end',
-    // 'React',
-    // 'Nodejs',
-    // 'Software engineer',
-    // 'backend',
-    // 'back-end',
-    // 'backend engineer',
-    // 'full stack',
-    // 'developer',
-    // 'SW',
-    // 'SDE',
-    // 'SRE',
-    // 'DevOps',
-    // 'QA',
-    // 'Testing',
-    // 'Testing Engineer'
+    'front end',
+    'React',
+    'Nodejs',
+    'Software engineer',
+    'backend',
+    'back-end',
+    'backend engineer',
+    'full stack',
+    'developer',
+    'SW',
+    'SDE',
+    'SRE',
+    'DevOps',
+    'QA',
+    'Testing',
+    'Testing Engineer'
 ]
 export const deafultScraperOptions = {
     headless: true,
