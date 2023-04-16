@@ -1,9 +1,3 @@
-// export a function that will return the data
-// import { Scraper } from 'linkedin-jobs-scraper/build/scraper/Scraper';
-// import { managedata } from '../../bin/manageData';
-import { exit } from 'process';
-import { dataJob, type, types } from '../../types/modules';
-
 import { entryScrapping } from './entryScrapper';
 import { internScrapping } from './internScrapper';
 

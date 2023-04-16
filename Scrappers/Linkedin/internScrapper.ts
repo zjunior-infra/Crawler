@@ -1,7 +1,7 @@
 import { LinkedinScraper, events, experienceLevelFilter, onSiteOrRemoteFilter, typeFilter } from "linkedin-jobs-scraper";
-import { ScraperOptions, deafultScraperOptions, queryTitle } from "./linkedinScrapping";
 import { dataJob } from "../../types/modules";
 import { managedata } from "../../bin/manageData";
+import { deafultScraperOptions, ScraperOptions, queryTitle } from "./linkedinScrapping";
 
 
 
