@@ -1,0 +1,17 @@
+name: Crawler runner
+
+on:
+  workflow_dispatch:
+      
+jobs:
+  run_crawler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: '19.x'
+      - name: Use Node.js {{ node -v }} 
+      - run: npm ci
+      - run: |
+          npm run gen
+          npm run start
