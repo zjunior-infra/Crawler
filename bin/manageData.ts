@@ -1,11 +1,12 @@
 import moment from 'moment';
-import type { Job, dataJob } from '../types/types'
+import type { Job, dataJob } from '../types/modules'
 import { PushJobs } from '../utils/prisma';
 export class managedata {
     data: Job[] = [];
     constructor(dataJobs: dataJob[]) {
         this.datatoJobType(dataJobs)
         this.PushtoDB();
+        
     }
     async PushtoDB() {
         //this will remove duplicates by the id 
@@ -19,6 +20,7 @@ export class managedata {
             this.data.push({ ...job, email: "" })
         })
         console.log("Done !")
+        
     }
 }
 export function createDeadline(date: string): string {

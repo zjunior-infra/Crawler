@@ -1,5 +1,5 @@
+import { LinkedinScrapper } from './scrappers/Linkedin/linkedinScrapping'
 
-
-import './scrappers/linkedinScrapping'
-
-
+(async ()=>{
+    await LinkedinScrapper()
+})()

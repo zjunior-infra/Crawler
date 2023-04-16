@@ -1,5 +1,5 @@
 import { CrawledJob, PrismaClient } from '@prisma/client'
-import { Job } from '../types/types'
+import { Job } from '../types/modules'
 const prisma = new PrismaClient()
 
 export async function PushJobs(Jobs:Job[]) {
