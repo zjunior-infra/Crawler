@@ -5,13 +5,22 @@ on:
       
 jobs:
   run_crawler:
+    name: Running the Crawler
     runs-on: ubuntu-latest
+    env:
+      MAIN_DATABASE_URL: ${{ secrets.MAIN_DATABASE_URL }}
+      LI_AT_COOKIE: ${{ secrets.LI_AT_COOKIE }}
+    
     steps:
       - uses: actions/checkout@v3
+      - name: Use Node.js 19.x
+        uses: actions/setup-node@v2.5.2
         with:
-          node-version: '19.x'
-      - name: Use Node.js {{ node -v }} 
-      - run: npm ci
-      - run: |
-          npm run gen
-          npm run start
+          node-version: 19.x
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Start the crawler
+        run: npm start      
