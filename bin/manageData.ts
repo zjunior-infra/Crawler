@@ -30,5 +30,3 @@ export function createDeadline(date: string): string {
     return moment(d).format("YYYY-MM-DD");
 }
 
-
-// he will send array 

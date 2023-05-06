@@ -27,3 +27,10 @@ export enum types{
   INTERNSHIP='Internship',
   ENTRYLEVEL='EntryLevel'
 }
+type IFilter = {
+  careerLevel:string[],
+  jobType:string[],
+  industry:string[],
+  experienceMin:string,
+  experienceMax:string
+}
