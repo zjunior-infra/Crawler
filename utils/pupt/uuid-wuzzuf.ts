@@ -1,5 +1,3 @@
-import { randomUUID } from "crypto";
-
 export function uuidJob(key:string){
     let value:string = "zj"
     const length:number = key.length;
