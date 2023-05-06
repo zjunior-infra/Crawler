@@ -34,3 +34,16 @@ type IFilter = {
   experienceMin:string,
   experienceMax:string
 }
+
+type IQuery = {
+  url:URL,
+  options:{
+      filters:IFilter,
+      search:string
+  }
+}
+
+type IUuid = {
+  value:string,
+  uuid:string
+}
