@@ -1,9 +1,10 @@
-import { IFilter } from "../../types/modules"
+import { IFilter, IQuery } from "../../types/modules"
 
-const newurl = new URL('https://wuzzuf.net/search/jobs/?a=hpb&filters%5Bcareer_level%5D%5B0%5D=Entry%20Level&filters%5Bcareer_level%5D%5B1%5D=Student&filters%5Bjob_types%5D%5B0%5D=full_time&filters%5Bjob_types%5D%5B1%5D=internship&filters%5Broles%5D%5B0%5D=Engineering%20-%20Telecom%2FTechnology&filters%5Broles%5D%5B1%5D=IT%2FSoftware%20Development&filters%5Byears_of_experience_max%5D%5B0%5D=3&filters%5Byears_of_experience_min%5D%5B0%5D=0&q=Software%20engineer')
-const filters:IFilter = {
+const url = new URL('https://wuzzuf.net/search/jobs/?a=hpb')
+
+export const filters:IFilter = {
     careerLevel: ['Entry Level','Student'],
-    jobType: ['Full time','Internship'],
+    jobType: ['full_time','internship'],
     industry: ['Engineering - Telecom/Technology','IT/Software Development'],
     experienceMin: '0',
     experienceMax: '3'
@@ -22,9 +23,11 @@ const filters:IFilter = {
     q
 
 */
-export function generateUrl(baseUrl:string ,filter:IFilter = filters){    
-    const url = new URL(baseUrl);
-    const searchParams = url.searchParams
+
+function generateUrl(baseUrl:URL = url ,filter = filters,search:string){    
+    const searchParams = baseUrl.searchParams
+
+    //appending all searchParams
     filter.careerLevel.map((career,idx)=>{
         searchParams.append(`filters[career_level][${idx}]`,career)        
     })
@@ -36,12 +39,11 @@ export function generateUrl(baseUrl:string ,filter:IFilter = filters){
     })
     searchParams.append('filters[years_of_experience_min][0]',filter.experienceMin)
     searchParams.append('filters[years_of_experience_max][0]',filter.experienceMax)
-    searchParams.append('q','Software engineer')
+    searchParams.append('q',search)
 
-    console.log(decodeURI(url.href))
-    
+    return baseUrl
 }
 
-function searchQuery(title:string){
-
+export function searchQuery(query:IQuery){
+    return generateUrl(query.url,query.filters,query.search)
 }
