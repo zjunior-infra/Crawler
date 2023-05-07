@@ -1,7 +1,12 @@
 import { LinkedinScrapper } from './scrappers/Linkedin/linkedinScrapping'
-import { generateUrl } from './utils/pupt/searchQuery'
+import { IQuery } from './types/modules'
+import { scrape } from './utils/pupt/scraper'
+import { searchQuery } from './utils/pupt/searchQuery'
+import { uuidJob } from './utils/pupt/uuid-wuzzuf'
 
 // (async ()=>{
 //     await LinkedinScrapper()
 // })()
-generateUrl('https://wuzzuf.net/search/jobs/?a=hbp')
+
+// console.log(searchQuery({search:'backend'}))
+scrape();
