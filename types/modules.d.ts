@@ -36,11 +36,9 @@ type IFilter = {
 }
 
 type IQuery = {
-  url:URL,
-  options:{
-      filters:IFilter,
-      search:string
-  }
+  url?:URL,
+  filters?:IFilter,
+  search:string
 }
 
 type IUuid = {
