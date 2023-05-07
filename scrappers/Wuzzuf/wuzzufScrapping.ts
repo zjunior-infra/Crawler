@@ -16,18 +16,18 @@ const Areas = {
   October: '6th of October',
   Dokki: 'Dokki',
   Mohandseen: 'Mohandessin',
-  Downtown : 'Downtown',
+  Downtown: 'Downtown',
 }
 const CareerLevels = {
-  Student : 'Student',
+  Student: 'Student',
   EntryLevel: 'Entry Level',
-  Experienced : 'Experienced',
+  Experienced: 'Experienced',
 }
 const JobTypes = {
   FullTime: 'Full time',
   PartTime: 'Part time',
   Internship: 'Internship',
-  FreelanceProject : 'Freelance project',
+  FreelanceProject: 'Freelance project',
 }
 
 interface IFilters {
@@ -37,20 +37,26 @@ interface IFilters {
   area?: string[] | string
   career_level?: string
   job_types?: string
+}
+
+interface IQuery {
   query: string
+  options?: IFilters
 }
 
 
 
-const setFilters = (filters: IFilters) => {
+const setFilters = (filters: IQuery) => {
 
 }
 
 setFilters({
   query: 'software engineer',
-  country: [Countries.Egypt],
-  city: [Cities.Cairo],
-  area: [Areas.Maadi],
-  career_level: CareerLevels.EntryLevel,
-  job_types: JobTypes.FullTime,
+  options: {
+    country: [Countries.Egypt],
+    city: [Cities.Cairo],
+    area: [Areas.Maadi],
+    career_level: CareerLevels.EntryLevel,
+    job_types: JobTypes.FullTime,
+  }
 })
