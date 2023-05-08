@@ -27,3 +27,21 @@ export enum types{
   INTERNSHIP='Internship',
   ENTRYLEVEL='EntryLevel'
 }
+type IFilter = {
+  careerLevel:string[],
+  jobType:string[],
+  industry:string[],
+  experienceMin:string,
+  experienceMax:string
+}
+
+type IQuery = {
+  url?:URL,
+  filters?:IFilter,
+  search:string
+}
+
+type IUuid = {
+  value:string,
+  uuid:string
+}

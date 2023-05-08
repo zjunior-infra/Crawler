@@ -1,4 +1,4 @@
-import { CrawledJob, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import { Job } from '../types/modules'
 const prisma = new PrismaClient()
 
