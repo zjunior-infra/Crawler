@@ -1,8 +1,8 @@
 import { IFilter, IQuery } from "../../types/modules"
 
-const url = new URL('https://wuzzuf.net/search/jobs/?a=hpb')
-
-export const filters:IFilter = {
+export const _url = new URL('https://wuzzuf.net/search/jobs/?a=hpb')
+// 
+export const _filters:IFilter = {
     careerLevel: ['Entry Level','Student'],
     jobType: ['full_time','internship'],
     industry: ['Engineering - Telecom/Technology','IT/Software Development'],
@@ -24,26 +24,49 @@ export const filters:IFilter = {
 
 */
 
-function generateUrl(baseUrl:URL = url ,filter = filters,search:string){    
-    const searchParams = baseUrl.searchParams
+export class SearchQuery {
+    private _query:IQuery
+    private currentPage:number
+    public searchUrl:URL
+    constructor(query:IQuery){
+        this.currentPage = 0;
+        this._query = query;
+        this.searchUrl = this.generateUrl();
+    }
 
-    //appending all searchParams
-    filter.careerLevel.map((career,idx)=>{
-        searchParams.append(`filters[career_level][${idx}]`,career)        
-    })
-    filter.jobType.map((type,idx)=>{
-        searchParams.append(`filters[job_types][${idx}]`,type)
-    })
-    filter.industry.map((industry,idx)=>{
-        searchParams.append(`filters[roles][${idx}]`,industry)
-    })
-    searchParams.append('filters[years_of_experience_min][0]',filter.experienceMin)
-    searchParams.append('filters[years_of_experience_max][0]',filter.experienceMax)
-    searchParams.append('q',search)
 
-    return baseUrl
-}
+    private generateUrl():URL{    
+        //appending all searchParams
+        this._query.filters?.careerLevel.map((career,idx)=>{
+            this._appendParam(`filters[career_level][${idx}]=${career}`);
+        })
+        this._query.filters?.jobType.map((type,idx)=>{
+            this._appendParam(`filters[job_types][${idx}]=${type}`)
+        })
 
-export function searchQuery(query:IQuery){
-    return generateUrl(query.url,query.filters,query.search)
+        this._query.filters?.industry.map((industry,idx)=>{
+            this._appendParam(`filters[roles][${idx}]=${industry}`)
+        })
+        this._appendParam(`filters[years_of_experience_min][0]=${this._query.filters?.experienceMin}`)
+        this._appendParam(`filters[years_of_experience_max][0]=${this._query.filters?.experienceMax}`)
+        this._appendParam(`q=${this._query.search}`)
+        return this._query.url ?? _url
+    }
+    private _appendParam(param:string){
+        const searchParams = this._query.url?.searchParams ?? _url.searchParams;
+        const toknize = param.split('=')
+        const {key,value} = {key:toknize[0],value:toknize[1]}
+        searchParams.append(key,value);
+    }
+
+    public navigate(totalJobs:number){
+        const Pages:number = Math.round(totalJobs/15)
+        if(Pages > 0 && this.currentPage === Pages-1){
+            this._query.url?.searchParams.set('start',this.currentPage.toString());
+            this.currentPage++
+        }
+        else{
+            console.log('current page is the final page')
+        }
+    } 
 }
