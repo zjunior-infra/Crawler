@@ -15,10 +15,11 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
         with:
-          submodules: 'true'
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
