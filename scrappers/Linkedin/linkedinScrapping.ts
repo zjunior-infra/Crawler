@@ -1,24 +1,28 @@
+import { limit, locations, titles } from '../../utils/options';
 import { entryScrapping } from './entryScrapper';
 import { internScrapping } from './internScrapper';
 
-export const queryTitle=[
-    'front-end',
-    'front end',
-    'React',
-    'Nodejs',
-    'Software engineer',
-    'backend',
-    'back-end',
-    'backend engineer',
-    'full stack',
-    'developer',
-    'SW',
-    'SDE',
-    'SRE',
-    'DevOps',
-    'QA',
-    'Testing',
-    'Testing Engineer'
+export const queryTitle= titles ?? [
+  'front-end',
+  'front end',
+  'React',
+  'Nodejs',
+  'Software engineer',
+  'backend',
+  'back-end',
+  'backend engineer',
+  'full stack',
+  'developer',
+  'SW',
+  'SDE',
+  'SRE',
+  'DevOps',
+  'QA',
+  'Testing',
+  'Testing Engineer',
+  'UI/UX',
+  'Product designer',
+  'designer'
 ]
 export const deafultScraperOptions = {
     headless: true,
@@ -28,8 +32,8 @@ export const deafultScraperOptions = {
     ],
 }
 export const ScraperOptions = {
-    locations: ["Egypt"],
-    limit: 30,
+    locations: locations ?? ["Egypt" ,"Cairo","EMEA","MENA"],
+    limit: limit ?? 25,
     applyLink: true,
 }
 
