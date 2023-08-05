@@ -32,7 +32,7 @@ export const deafultScraperOptions = {
     ],
 }
 export const ScraperOptions = {
-    locations: locations ?? ["Egypt" ,"Cairo","EMEA","MENA"],
+    locations: locations ?? ["Egypt","Cairo","EMEA","MENA"],
     limit: limit ?? 25,
     applyLink: true,
 }
