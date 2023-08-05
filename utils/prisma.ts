@@ -1,10 +1,9 @@
-import { PrismaClient } from '@prisma/client'
-import { Job } from '../types/modules'
+import { CrawledOpportunity, PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-export async function PushJobs(Jobs:Job[]) {
+export async function PushJobs(Jobs:CrawledOpportunity[]) {
     try{
-        const jobs= await prisma.crawledJob.createMany({
+        const jobs= await prisma.crawledOpportunity.createMany({
             data:[
                 ...Jobs
             ],

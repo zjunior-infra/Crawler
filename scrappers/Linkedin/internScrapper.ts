@@ -2,17 +2,13 @@ import { LinkedinScraper, events, experienceLevelFilter, onSiteOrRemoteFilter, t
 import { dataJob } from "../../types/modules";
 import { managedata } from "../../bin/manageData";
 import { deafultScraperOptions, ScraperOptions, queryTitle } from "./linkedinScrapping";
+import { CrawledOpportunity, opportunityType } from "@prisma/client";
+import { PushJobs } from "../../utils/prisma";
 
 
 
-const jobs:dataJob[] = [];
-export interface type{
-  Type:types
-}
-export enum types{
-  INTERNSHIP='Internship',
-  ENTRYLEVEL='EntryLevel'
-}
+const jobs:CrawledOpportunity[] = [];
+
 
 export async function internScrapping(){
     const intern = new LinkedinScraper(deafultScraperOptions);
@@ -45,11 +41,11 @@ export async function internScrapping(){
           id: data.jobId,
           title: data.title,
           company: data.company,
-          link: data.applyLink ? data.applyLink : data.link,
-          logo: data.companyImgLink || '',
-          deadline: data.date,
+          link: data.applyLink ?? data.link,
+          logo: data.companyImgLink ?? '',
+          description: data.description,
           skills: '',
-          type: types.INTERNSHIP,
+          type: opportunityType.Internship,
         });
       });
 
@@ -61,10 +57,9 @@ export async function internScrapping(){
     //     console.error(err);
     //   });
     
-      intern.on(events.scraper.end, () => {
+      intern.on(events.scraper.end, async () => {
         console.log('Internship has been done!');
-        // console.log(jobs);
-        const sendToDB = new managedata(jobs)
+        console.log(await PushJobs(jobs))
       });
     
       // Run queries concurrently    
