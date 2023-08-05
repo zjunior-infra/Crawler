@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "ts-node index.ts",
-    "gen": "npx prisma generate"
+    "gen": "npx prisma generate --schema=./ORM/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
