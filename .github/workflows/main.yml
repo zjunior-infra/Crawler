@@ -12,6 +12,7 @@ jobs:
       LI_AT_COOKIE: ${{ secrets.LI_AT_COOKIE }}
       LIMIT: ${{ secrets.LIMIT }}
       TITLES: ${{ secrets.TITLES }}
+      LOCATION: ${{ secrets.LOCATION }}
     
     steps:
       - uses: actions/checkout@v3
