@@ -30,11 +30,6 @@ jobs:
       - name: generate types of prisma
         run: npm run gen
         
-      - name: Upload the Artifacts 
-        uses: actions/upload-artifact@v3
-        with: 
-          name: crawler
-          path: ./
 
   Backend:
     name: Looking for a Backend EntryLevel
@@ -47,10 +42,9 @@ jobs:
       TITLES: 'Backend'
       LOCATION: 'Egypt'
     steps:
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: crawler
+          submodules: 'true'
 
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
@@ -58,10 +52,14 @@ jobs:
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
       
+      - name: generate types of prisma
+        run: npm run gen
+
       - name: Run the Backend Scrapping
         run: npm run start entry
-        working-directory: crawler
 
 
   Frontend:
@@ -75,10 +73,9 @@ jobs:
       TITLES: 'Frontend'
       LOCATION: 'Egypt'
     steps:
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: crawler
+          submodules: 'true'
 
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
@@ -86,10 +83,14 @@ jobs:
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
       
+      - name: generate types of prisma
+        run: npm run gen
+
       - name: Run the Frontend Scrapping
         run: npm run start entry
-        working-directory: crawler
   SW:
     name: Looking for a Software Engineer EntryLevel
     needs: build_crawler
@@ -101,10 +102,9 @@ jobs:
       TITLES: 'Software Engineer'
       LOCATION: 'Egypt'
     steps:
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: crawler
+          submodules: 'true'
 
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
@@ -112,10 +112,14 @@ jobs:
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
       
+      - name: generate types of prisma
+        run: npm run gen
+
       - name: Run the Software Engineer Scrapping
         run: npm run start entry
-        working-directory: crawler
   InternBack:
     name: Looking for a Backend Internship
     needs: build_crawler
@@ -127,10 +131,9 @@ jobs:
       TITLES: 'Backend'
       LOCATION: 'Egypt'
     steps:
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: crawler
+          submodules: 'true'
 
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
@@ -138,10 +141,14 @@ jobs:
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
       
-      - name: Run the Backend Scrapping
+      - name: generate types of prisma
+        run: npm run gen
+
+      - name: Run the Backend Intern Scrapping
         run: npm run start intern
-        working-directory: crawler
   InternFront:
     name: Looking for a Frontend intern
     needs: build_crawler
@@ -153,10 +160,9 @@ jobs:
       TITLES: 'Backend'
       LOCATION: 'Egypt'
     steps:
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: crawler
+          submodules: 'true'
 
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
@@ -164,10 +170,14 @@ jobs:
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
       
+      - name: generate types of prisma
+        run: npm run gen
+
       - name: Run the Backend Scrapping
         run: npm run start intern
-        working-directory: crawler
   InternSW:
     name: Looking for a Software Engineer intern
     needs: build_crawler
@@ -179,10 +189,9 @@ jobs:
       TITLES: 'Software Engineer'
       LOCATION: 'Egypt'
     steps:
-      - name: Download the artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: crawler
+          submodules: 'true'
 
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
@@ -190,7 +199,11 @@ jobs:
           node-version: 19.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
       
+      - name: generate types of prisma
+        run: npm run gen
+
       - name: Run the Software Engineer Scrapping
         run: npm run start intern
-        working-directory: crawler
