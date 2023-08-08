@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with: 
           name: crawler
-          path: build
+          path: ./
 
   Backend:
     name: Looking for a Backend EntryLevel
@@ -59,11 +59,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - shell: bash
-        run: |
-          cd build
       - name: Run the Backend Scrapping
         run: npm run start entry
+        working-directory: crawler
 
 
   Frontend:
@@ -89,11 +87,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - shell: bash
-        run: |
-          cd build
       - name: Run the Frontend Scrapping
         run: npm run start entry
+        working-directory: crawler
   SW:
     name: Looking for a Software Engineer EntryLevel
     needs: build_crawler
@@ -117,11 +113,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - shell: bash
-        run: |
-          cd build
       - name: Run the Software Engineer Scrapping
         run: npm run start entry
+        working-directory: crawler
   InternBack:
     name: Looking for a Backend Internship
     needs: build_crawler
@@ -145,11 +139,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - shell: bash
-        run: |
-          cd build
       - name: Run the Backend Scrapping
         run: npm run start intern
+        working-directory: crawler
   InternFront:
     name: Looking for a Frontend intern
     needs: build_crawler
@@ -173,11 +165,9 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - shell: bash
-        run: |
-          cd build
       - name: Run the Backend Scrapping
         run: npm run start intern
+        working-directory: crawler
   InternSW:
     name: Looking for a Software Engineer intern
     needs: build_crawler
@@ -201,8 +191,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: package-lock.json
       
-      - shell: bash
-        run: |
-          cd build
       - name: Run the Software Engineer Scrapping
         run: npm run start intern
+        working-directory: crawler
