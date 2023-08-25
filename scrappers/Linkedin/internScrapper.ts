@@ -1,9 +1,8 @@
 import { LinkedinScraper, events, experienceLevelFilter, onSiteOrRemoteFilter, typeFilter } from "linkedin-jobs-scraper";
-import { dataJob } from "../../types/modules";
-import { managedata } from "../../bin/manageData";
 import { deafultScraperOptions, ScraperOptions, queryTitle } from "./linkedinScrapping";
-import { CrawledOpportunity, opportunityType } from "@prisma/client";
+import { CrawledOpportunity, Opportunity, opportunityLevel } from "@prisma/client";
 import { PushJobs } from "../../utils/prisma";
+import { titles } from "../../utils/options";
 
 
 
@@ -45,7 +44,8 @@ export async function internScrapping(){
           logo: data.companyImgLink ?? '',
           description: data.description,
           skills: '',
-          type: opportunityType.Internship,
+          level: opportunityLevel.Internship,
+          role: titles?.toString() ?? ""
         });
       });
 

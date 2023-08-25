@@ -6,16 +6,14 @@ import {
   typeFilter,
 } from "linkedin-jobs-scraper";
 
-import { dataJob } from "../../types/modules";
-import { managedata } from "../../bin/manageData";
-
 import {
   ScraperOptions,
   deafultScraperOptions,
   queryTitle,
 } from "./linkedinScrapping";
-import { CrawledOpportunity, opportunityType } from "@prisma/client";
+import { CrawledOpportunity, opportunityLevel } from "@prisma/client";
 import { PushJobs } from "../../utils/prisma";
+import { titles } from "../../utils/options";
 
 const jobs: CrawledOpportunity[] = [];
 
@@ -60,7 +58,8 @@ entry.on(events.scraper.data, async (data) => {
     logo: data.companyImgLink ?? "",
     description: data.description,
     skills: "",
-    type: opportunityType.Entrylevel,
+    level: opportunityLevel.Entrylevel,
+    role: titles?.toString() ?? ""
   };
 
   // Push data to the database
