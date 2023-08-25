@@ -53,9 +53,9 @@ export async function internScrapping(){
     //     console.log(`Processed=${metrics.processed}`, `Failed=${metrics.failed}`, `Missed=${metrics.missed}`);
     //   });
     
-    //   intern.on(events.scraper.error, (err) => {
-    //     console.error(err);
-    //   });
+      intern.on(events.scraper.error, (err) => {
+        console.error(err);
+      });
     
       intern.on(events.scraper.end, async () => {
         console.log('Internship has been done!');
