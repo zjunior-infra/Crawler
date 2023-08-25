@@ -5,6 +5,7 @@ import {
   onSiteOrRemoteFilter,
   typeFilter,
 } from "linkedin-jobs-scraper";
+import { dataJob } from "../../types/modules";
 
 import {
   ScraperOptions,
