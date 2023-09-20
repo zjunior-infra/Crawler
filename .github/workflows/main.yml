@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.8
         with:
           submodules: 'true'
       - name: Use Node.js 19.x
         uses: actions/setup-node@v3
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
@@ -40,10 +40,10 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3.8
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
@@ -71,10 +71,10 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3.8
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
@@ -100,10 +100,10 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3.8
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
@@ -129,10 +129,10 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3.8
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
@@ -158,10 +158,10 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3.8
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
@@ -187,10 +187,10 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 19.x
-        uses: actions/setup-node@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3.8
         with:
-          node-version: 19.x
+          node-version: 16.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
       - name: Install dependencies
